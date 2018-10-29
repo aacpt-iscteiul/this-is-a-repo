@@ -1,20 +1,23 @@
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Gui extends Application {
 	
-	private static List<Image> images;
-	private static List<Integer> wheel0, wheel1, wheel2;
+	private static List<Image> images = new ArrayList<>();
+	private static List<Integer> wheel0 = new ArrayList<>(), wheel1 = new ArrayList<>(), wheel2 = new ArrayList<>();
 	private ImageView imageViewSlot00, imageViewSlot01, imageViewSlot02, 
 	imageViewSlot10, imageViewSlot11, imageViewSlot12, imageViewSlot20, imageViewSlot21, imageViewSlot22;
 	private Image imageDiamond, imageClover, imageCherries, imageLemon, imageOrange;
@@ -25,59 +28,65 @@ public class Gui extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		GridPane frame = new GridPane();
+		GridPane grid = new GridPane();
 		
-		imageDiamond = new Image(new FileInputStream("slotmachine/Diamond.png"));  // 0
-		imageClover = new Image(new FileInputStream("slotmachine/Clover.png"));    // 1
-		imageCherries = new Image(new FileInputStream("slotmachine/Cherries.png"));// 2
-		imageLemon = new Image(new FileInputStream("slotmachine/Lemon.png"));      // 3
-		imageOrange = new Image(new FileInputStream("slotmachine/Orange.png"));    // 4
+		imageDiamond = new Image(new FileInputStream("slotmachine/Diamond.png"), 75, 75, false, false);  // 0
+		imageClover = new Image(new FileInputStream("slotmachine/Clover.png"), 75, 75, false, false);    // 1
+		imageCherries = new Image(new FileInputStream("slotmachine/Cherries.png"), 75, 75, false, false);// 2
+		imageLemon = new Image(new FileInputStream("slotmachine/Lemon.png"), 75, 75, false, false);      // 3
+		imageOrange = new Image(new FileInputStream("slotmachine/Orange.png"), 75, 75, false, false);    // 4
 		
-//		images.add(imageDiamond);
-//		images.add(imageClover);
-//		images.add(imageCherries);
-//		images.add(imageLemon);
-//		images.add(imageOrange);
+		images.add(imageDiamond);
+		images.add(imageClover);
+		images.add(imageCherries);
+		images.add(imageLemon);
+		images.add(imageOrange);
 		
 		getWheels();
 
 		imageViewSlot00 = new ImageView();
 		GridPane.setConstraints(imageViewSlot00, 0, 0);
-		frame.getChildren().add(imageViewSlot00);
+		grid.getChildren().add(imageViewSlot00);
 		imageViewSlot01= new ImageView();
 		GridPane.setConstraints(imageViewSlot01, 0, 1);
-		frame.getChildren().add(imageViewSlot01);
+		grid.getChildren().add(imageViewSlot01);
 		imageViewSlot02 = new ImageView();
 		GridPane.setConstraints(imageViewSlot02, 0, 2);
-		frame.getChildren().add(imageViewSlot02);
+		grid.getChildren().add(imageViewSlot02);
 		imageViewSlot10= new ImageView();
 		GridPane.setConstraints(imageViewSlot10, 1, 0);
-		frame.getChildren().add(imageViewSlot10);
+		grid.getChildren().add(imageViewSlot10);
 		imageViewSlot11 = new ImageView();
 		GridPane.setConstraints(imageViewSlot11, 1, 1);
-		frame.getChildren().add(imageViewSlot11);
+		grid.getChildren().add(imageViewSlot11);
 		imageViewSlot12 = new ImageView();		
 		GridPane.setConstraints(imageViewSlot12, 1, 2);
-		frame.getChildren().add(imageViewSlot12);
+		grid.getChildren().add(imageViewSlot12);
 		imageViewSlot20= new ImageView();
 		GridPane.setConstraints(imageViewSlot20, 2, 0);
-		frame.getChildren().add(imageViewSlot20);
+		grid.getChildren().add(imageViewSlot20);
 		imageViewSlot21 = new ImageView();
 		GridPane.setConstraints(imageViewSlot21, 2, 1);
-		frame.getChildren().add(imageViewSlot21);
+		grid.getChildren().add(imageViewSlot21);
 		imageViewSlot22 = new ImageView();
 		GridPane.setConstraints(imageViewSlot22, 2, 2);
-		frame.getChildren().add(imageViewSlot22);
+		grid.getChildren().add(imageViewSlot22);
 		
-//		setWheels(0, 0, 0);
+		setWheels(0, 0, 0);
 		
 		
 		
-//		Button buttonSpin = new Button("Spin!");
+		Button buttonSpin = new Button("Spin!");
 //		buttonSpin.getOnAction(e -> );
+		Label youWon = new Label("You won");
+		TextField prize = new TextField("0");
 		
-		
-		primaryStage.setScene(new Scene(frame, 600, 400));
+		VBox frame = new VBox();
+		HBox bottom = new HBox();
+		bottom.getChildren().addAll(buttonSpin, youWon, prize);
+		frame.getChildren().addAll(grid, bottom);
+		frame.setAlignment(Pos.CENTER);
+		primaryStage.setScene(new Scene(frame));
 		primaryStage.show();
 	}
 
