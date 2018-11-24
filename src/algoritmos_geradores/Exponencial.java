@@ -18,17 +18,22 @@ public class Exponencial { // ++++++++++ INTERVALO DE 25K A 30K ++++++++++++++++
 
 	public void gerar() {
 		for (int i = 0; i < numAmostras; i++) {
-			double x = inicio + Math.log(1 - Math.random()) / (-lambda);
-			x = (int) (x * 1000);
-			if (x > 30000)
-				x = 30000;
-			resultados.add(x);
-			System.out.println(x);
+			double amostra = inicio + Math.log(1 - Math.random()) / (-lambda);
+			amostra = (int) (amostra * 1000);
+			while (amostra > 30000) {
+				amostra = inicio + Math.log(1 - Math.random()) / (-lambda);
+				amostra = (int) (amostra * 1000);
+			}
+			resultados.add(amostra);
+			System.out.println(amostra);
+			
 		}
 
 	}
 
 	public static void main(String[] args) {
+//		double lambda = 0.0015;
+//		double inicio = 25000.0;
 		double lambda = 1.0;
 		double inicio = 25.0;
 		int numAmostras = 100;

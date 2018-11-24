@@ -30,8 +30,8 @@ public class Coseno {
 
 	public static void main(String[] args) {
 
-		double xMax = 10000.;
-		double xMin = 5000.;
+		double xMin = 10000.;
+		double xMax = 15000.;
 		int numAmostras = 100;
 
 		Coseno c = new Coseno(xMax, xMin, numAmostras);

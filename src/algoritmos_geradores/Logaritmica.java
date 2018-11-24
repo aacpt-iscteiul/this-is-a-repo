@@ -7,7 +7,7 @@ public class Logaritmica {
 	private double xMin;
 	private double xMax;
 	private int numAmostras;
-	private ArrayList<Double> amostraados;
+	private ArrayList<Double> resultados;
 
 	public Logaritmica(double xMin, double xMax, int numAmostras) {
 		this.xMax = xMax;
@@ -23,7 +23,7 @@ public class Logaritmica {
 			double amostra = a + b * Math.random() * Math.random();
 			amostra = (int) (amostra * 1000);
 			System.out.println(amostra);
-			amostraados.add(amostra);
+			resultados.add(amostra);
 		}
 	}
 

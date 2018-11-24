@@ -18,16 +18,14 @@ public class Gaussiana {
 		while (count < contador) {
 			Random r = new Random();
 			double amostra = r.nextGaussian() * dp + media;
-			if (amostra < min) {
-				amostra = min;
-			} else if (amostra > max) {
-				amostra = max;
+			while (amostra < min || amostra > max) {
+				r = new Random();
+				amostra = r.nextGaussian() * dp + media;
 			}
-			resultados.add(amostra);
 			count++;
-		}
-		for (Double amostra : resultados)
+			resultados.add(amostra);
 			System.out.println(amostra);
+		}
 	}
 
 	public static void main(String[] args) {
