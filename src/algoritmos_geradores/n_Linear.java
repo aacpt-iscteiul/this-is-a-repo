@@ -2,12 +2,12 @@ package algoritmos;
 
 import java.util.ArrayList;
 
-public class Linear {
+public class n_Linear {
 
 	private double declive;
 	private ArrayList<Double> resultados;
 
-	public Linear(double declive) {
+	public n_Linear(double declive) {
 		this.declive = declive;
 		resultados = new ArrayList<Double>();
 	}
@@ -21,7 +21,7 @@ public class Linear {
 	public static void main(String[] args) {
 		double declive = 0.5;
 		double x = 5;
-		Linear l = new Linear(declive);
+		n_Linear l = new n_Linear(declive);
 		l.gerar(x);
 	}
 

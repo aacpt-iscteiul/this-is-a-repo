@@ -1,5 +1,9 @@
 package algoritmos;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Diamante {
 
 	private int[] pos;
@@ -38,6 +42,23 @@ public class Diamante {
 			for (int i = 0; i < pos.length; i++)
 				System.out.println("posição " + i + " tem " + pos[i] + " ocorrências");
 		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		escreveFicheiro();
+	}
+
+	private void escreveFicheiro() {
+		try {
+			PrintWriter outFile = new PrintWriter(new FileWriter("diamante.txt"));
+
+			outFile.println(pos[0]);
+			outFile.println(pos[1]);
+			outFile.println(pos[2]);
+			outFile.println(pos[3]);
+			outFile.println(pos[4]);
+
+			outFile.close();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

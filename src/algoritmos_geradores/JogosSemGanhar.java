@@ -1,5 +1,9 @@
 package algoritmos;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class JogosSemGanhar {
 
 	private int[] pos;
@@ -43,10 +47,27 @@ public class JogosSemGanhar {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		escreveFicheiro();
+	}
+	
+	private void escreveFicheiro() {
+		try {
+			PrintWriter outFile = new PrintWriter(new FileWriter("jogossemganhar.txt"));
+
+			outFile.println(pos[0]);
+			outFile.println(pos[1]);
+			outFile.println(pos[2]);
+			outFile.println(pos[3]);
+			outFile.println(pos[4]);
+
+			outFile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
-		final int JOGOS_SEM_GANHAR = 20;
+		final int JOGOS_SEM_GANHAR = 10;
 		JogosSemGanhar j = new JogosSemGanhar(1000, JOGOS_SEM_GANHAR);
 		j.gerar();
 	}

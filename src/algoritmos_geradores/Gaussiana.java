@@ -1,5 +1,10 @@
 package algoritmos;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -23,13 +28,35 @@ public class Gaussiana {
 				amostra = r.nextGaussian() * dp + media;
 			}
 			count++;
-			resultados.add(amostra);
-			System.out.println(amostra);
+			resultados.add(round(amostra, 2));
+			System.out.println(round(amostra, 2));
 		}
+		escreveFicheiro();
+	}
+	
+	private void escreveFicheiro() {
+		try {
+			PrintWriter outFile = new PrintWriter(new FileWriter("gaussiana.txt"));
+
+			for (double a : resultados)
+				outFile.println(a + ", ");
+
+			outFile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
 	}
 
 	public static void main(String[] args) {
-		Gaussiana g = new Gaussiana(100);
+		Gaussiana g = new Gaussiana(1000);
 		try {
 			g.gerar(0.2, 5.0, 4.0, 6.0);
 		} catch (InterruptedException e) {

@@ -1,5 +1,8 @@
 package algoritmos;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Coseno {
@@ -7,13 +10,13 @@ public class Coseno {
 	private double xMax;
 	private double xMin;
 	private int numAmostras;
-	private ArrayList<Double> resultados;
+	private ArrayList<Integer> resultados;
 
 	public Coseno(double xMax, double xMin, int numAmostras) {
 		this.xMax = xMax;
 		this.xMin = xMin;
 		this.numAmostras = numAmostras;
-		resultados = new ArrayList<Double>();
+		resultados = new ArrayList<Integer>();
 	}
 
 	public void gerar() {
@@ -22,17 +25,31 @@ public class Coseno {
 		double b = (xMax - xMin) / Math.PI; 	// parametro de escala
 		for (int i = 0; i < numAmostras; i++) {
 			double amostra = a + b * Math.asin(1.0 - Math.random() * 2);
-			resultados.add(amostra);
+			resultados.add((int)amostra);
 			System.out.println(amostra);
 		}
+		escreveFicheiro();
 
+	}
+	
+	private void escreveFicheiro() {
+		try {
+			PrintWriter outFile = new PrintWriter(new FileWriter("coseno.txt"));
+
+			for (double a : resultados)
+				outFile.println(a + ", ");
+
+			outFile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
 
 		double xMin = 10000.;
 		double xMax = 15000.;
-		int numAmostras = 100;
+		int numAmostras = 1000;
 
 		Coseno c = new Coseno(xMax, xMin, numAmostras);
 		c.gerar();

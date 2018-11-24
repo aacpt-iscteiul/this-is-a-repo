@@ -1,5 +1,8 @@
 package algoritmos;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Rayleigh { // +++++++++ INTERVALO DE 20K 25K ++++++++++++++++
@@ -21,11 +24,25 @@ public class Rayleigh { // +++++++++ INTERVALO DE 20K 25K ++++++++++++++++
 			double amostra = loc + esc * Math.sqrt(-Math.log(Math.random()));
 			amostra = (int) (amostra * 1000);
 			while (amostra > 25000) {
-				double amostra = loc + esc * Math.sqrt(-Math.log(Math.random()));
+				amostra = loc + esc * Math.sqrt(-Math.log(Math.random()));
 				amostra = (int) (amostra * 1000);
 			}
 			System.out.println(amostra);
 			resultados.add(amostra);
+		}
+		escreveFicheiro();
+	}
+	
+	private void escreveFicheiro() {
+		try {
+			PrintWriter outFile = new PrintWriter(new FileWriter("rayleigh.txt"));
+
+			for (double a : resultados)
+				outFile.println(a + ", ");
+
+			outFile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -33,7 +50,7 @@ public class Rayleigh { // +++++++++ INTERVALO DE 20K 25K ++++++++++++++++
 
 		double loc = 20.0; // localização
 		double esc = 2.0; // escala
-		int numAmostras = 100;
+		int numAmostras = 1000;
 
 		Rayleigh ray = new Rayleigh(loc, esc, numAmostras);
 		ray.gerar();
