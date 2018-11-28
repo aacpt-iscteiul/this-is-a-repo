@@ -59,6 +59,7 @@ public class Diamante {
 			return 2;
 		else if (num >= (pct1 + pct2 + pct3) && num < (100 - pct1)) // 2.5% probabilidade de sair na posição 3
 			return 3;
+		//Provavelmente tem de ser s� else return 4; But I can't compile....
 		else if (num >= (100 - pct1)) // 45% probabilidade de sair na posição 4
 			return 4;
 		

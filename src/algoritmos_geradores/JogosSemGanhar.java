@@ -51,6 +51,31 @@ public class JogosSemGanhar {
 	}
 	
 	
+	public int gerarJogosSemGanhar(int no_wins) {
+		
+		if(nowins<=20)
+			no_wins=nowins;
+		else
+			no_wins=20;
+		
+		double num = (Math.random() * 100);
+
+		if (num < 45 - 2 * no_wins) // sair na posição 0
+			return 0;
+		else if (num >= 45 - 2 * no_wins && num < 47.5 - no_wins) // sair na posição 1
+			return 1;
+		else if (num >= 47.5 - no_wins && num < 52.5 + no_wins) //  sair na posição 2
+			return 2;
+			else if (num >= 52.5 + no_wins && num < 55 + 2 * no_wins) //  sair na posição 3
+			return 3;
+		
+		//Provavelmente tem de ser s� else return 4; But I can't compile....
+		else if (num >= 55 + 2 * no_wins) //  sair na posição 4
+			return 4;
+		
+		
+	}
+	
 	
 	
 	private void escreveFicheiro() {
