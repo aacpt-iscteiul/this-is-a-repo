@@ -37,8 +37,13 @@ public class Exponencial { // ++++++++++ INTERVALO DE 25K A 30K ++++++++++++++++
 		
 		double lambda = 1.0;
 		double inicio = 25.0;
+		
 		double amostra = inicio + Math.log(1 - Math.random()) / (-lambda);
 		amostra = (int) (amostra * 1000);
+		while (amostra > 30000) {
+			amostra = inicio + Math.log(1 - Math.random()) / (-lambda);
+			amostra = (int) (amostra * 1000);
+		}
 		
 		return amostra;
 		

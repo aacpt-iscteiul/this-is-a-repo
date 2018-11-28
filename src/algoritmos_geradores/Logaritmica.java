@@ -35,6 +35,23 @@ public class Logaritmica {
 		escreveFicheiro();
 	}
 	
+	public double gerarLogaritmica() {
+		
+		double xMin = 15.0;
+		double xMax = 20.0;
+		
+		double amostra = a + b * Math.random() * Math.random();
+		amostra = (int) (amostra * 1000);
+		while(amostra < 15000 || amostra > 20000) {
+			amostra = a + b * Math.random() * Math.random();
+			amostra = (int) (amostra * 1000);
+		}
+		
+		return amostra;
+		
+		
+	}
+	
 	private void escreveFicheiro() {
 		try {
 			PrintWriter outFile = new PrintWriter(new FileWriter("logaritmica.txt"));

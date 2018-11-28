@@ -44,9 +44,12 @@ public class Gaussiana {
 		
 		Random r = new Random();
 		double amostra = r.nextGaussian() * dp + media;
+		while (amostra < min || amostra > max) {
+			r = new Random();
+			amostra = r.nextGaussian() * dp + media;
+		}
 		
-		
-		//amostra = round(amostra, 2); //Implement this?
+		amostra = round(amostra, 2); //Implement this?
 		return amostra;
 		
 		

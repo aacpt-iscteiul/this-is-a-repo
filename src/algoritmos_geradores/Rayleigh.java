@@ -33,6 +33,20 @@ public class Rayleigh { // +++++++++ INTERVALO DE 20K 25K ++++++++++++++++
 		escreveFicheiro();
 	}
 	
+	public double gerarRayleigh() {
+		double loc = 20.0; // localização
+		double esc = 2.0; // escala
+		
+		double amostra = loc + esc * Math.sqrt(-Math.log(Math.random()));
+		amostra = (int) (amostra * 1000);
+		while (amostra > 25000) {
+			amostra = loc + esc * Math.sqrt(-Math.log(Math.random()));
+			amostra = (int) (amostra * 1000);
+		}
+		
+		return amostra;
+	}
+	
 	private void escreveFicheiro() {
 		try {
 			PrintWriter outFile = new PrintWriter(new FileWriter("rayleigh.txt"));

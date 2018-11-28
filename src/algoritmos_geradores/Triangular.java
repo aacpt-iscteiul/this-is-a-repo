@@ -37,6 +37,25 @@ public class Triangular { // ++++++++++ INTERVALO DE 5K A 10K ++++++++++++++++
 		System.out.println("processamento terminou");
 	}
 
+	public double gerarTriangular() {
+		double xMin = 5000.;
+		double xMax = 10000.;
+		double c = 6500.; // Moda
+		
+		double amostra;
+		double p = Math.random();
+		double q = 1. - p;
+		if (p <= (c - xMin) / (xMax - xMin)) {
+			amostra = xMin + Math.sqrt((xMax - xMin) * (c - xMin) * p);
+		} else {
+			amostra = xMax - Math.sqrt((xMax - xMin) * (xMax - c) * q);
+		}
+		
+		
+		return amostra;
+	}
+	
+	
 	private void escreveFicheiro() {
 		try {
 			PrintWriter outFile = new PrintWriter(new FileWriter("triangular.txt"));
