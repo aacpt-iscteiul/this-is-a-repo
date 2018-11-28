@@ -34,6 +34,24 @@ public class Gaussiana {
 		escreveFicheiro();
 	}
 	
+	public double gerarGaussiana() {
+		
+		double dp = 0.2;
+		double media = 5.0;
+		double min = 4.0;
+		double max = 6.0;
+		
+		
+		Random r = new Random();
+		double amostra = r.nextGaussian() * dp + media;
+		
+		
+		//amostra = round(amostra, 2); //Implement this?
+		return amostra;
+		
+		
+	}
+	
 	private void escreveFicheiro() {
 		try {
 			PrintWriter outFile = new PrintWriter(new FileWriter("gaussiana.txt"));

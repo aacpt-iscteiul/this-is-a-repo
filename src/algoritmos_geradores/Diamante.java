@@ -46,6 +46,23 @@ public class Diamante {
 		}
 		escreveFicheiro();
 	}
+	
+	public int gerarPosDiamante() {
+		
+		double num = (Math.random() * 100);
+		
+		if (num < pct1) // 45% probabilidade de sair na posição 0
+			return 0;
+		else if (num >= pct1 && num < (pct1 + pct2)) // 2.5% probabilidade de sair na posição 1
+			return 1;
+		else if (num >= (pct1 + pct2) && num < (pct1 + pct2 + pct3)) // 5% probabilidade de sair na posição 2
+			return 2;
+		else if (num >= (pct1 + pct2 + pct3) && num < (100 - pct1)) // 2.5% probabilidade de sair na posição 3
+			return 3;
+		else if (num >= (100 - pct1)) // 45% probabilidade de sair na posição 4
+			return 4;
+		
+	}
 
 	private void escreveFicheiro() {
 		try {

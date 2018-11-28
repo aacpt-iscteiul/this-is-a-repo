@@ -32,6 +32,17 @@ public class Coseno {
 
 	}
 	
+	public double gerarCos() {
+		
+		double xMin = 10000.;
+		double xMax = 15000.;
+		double a = 0.5 * (xMin + xMax); 		// parametro de localização = moda/média
+		double b = (xMax - xMin) / Math.PI; 	// parametro de escala
+		double amostra = a + b * Math.asin(1.0 - Math.random() * 2);
+		
+		return amostra;
+	}
+	
 	private void escreveFicheiro() {
 		try {
 			PrintWriter outFile = new PrintWriter(new FileWriter("coseno.txt"));

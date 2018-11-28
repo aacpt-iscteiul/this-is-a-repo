@@ -50,6 +50,9 @@ public class JogosSemGanhar {
 		escreveFicheiro();
 	}
 	
+	
+	
+	
 	private void escreveFicheiro() {
 		try {
 			PrintWriter outFile = new PrintWriter(new FileWriter("jogossemganhar.txt"));
