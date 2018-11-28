@@ -70,7 +70,8 @@ public class JogosSemGanhar {
 			return 3;
 		
 		//Provavelmente tem de ser s� else return 4; But I can't compile....
-		else if (num >= 55 + 2 * no_wins) //  sair na posição 4
+		//else if (num >= 55 + 2 * no_wins) //  sair na posição 4
+		else 
 			return 4;
 		
 		
