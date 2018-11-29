@@ -32,9 +32,20 @@ public class Coseno {
 
 	}
 	
+	public double gerarCos() {
+		
+		double xMin = 10000.;
+		double xMax = 15000.;
+		double a = 0.5 * (xMin + xMax); 		// parametro de localização = moda/média
+		double b = (xMax - xMin) / Math.PI; 	// parametro de escala
+		double amostra = a + b * Math.asin(1.0 - Math.random() * 2);
+		
+		return amostra;
+	}
+	
 	private void escreveFicheiro() {
 		try {
-			PrintWriter outFile = new PrintWriter(new FileWriter("coseno.txt"));
+			PrintWriter outFile = new PrintWriter(new FileWriter("coseno" + numAmostras + ".txt"));
 
 			for (double a : resultados)
 				outFile.println(a + ", ");
@@ -43,13 +54,14 @@ public class Coseno {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("coseno" + numAmostras + ".txt escrito em disco");
 	}
 
 	public static void main(String[] args) {
 
 		double xMin = 10000.;
 		double xMax = 15000.;
-		int numAmostras = 1000;
+		int numAmostras = 10000;
 
 		Coseno c = new Coseno(xMax, xMin, numAmostras);
 		c.gerar();

@@ -32,10 +32,24 @@ public class Rayleigh { // +++++++++ INTERVALO DE 20K 25K ++++++++++++++++
 		}
 		escreveFicheiro();
 	}
-	
+
+	public double gerarRayleigh() {
+		double loc = 20.0; // localização
+		double esc = 2.0; // escala
+
+		double amostra = loc + esc * Math.sqrt(-Math.log(Math.random()));
+		amostra = (int) (amostra * 1000);
+		while (amostra > 25000) {
+			amostra = loc + esc * Math.sqrt(-Math.log(Math.random()));
+			amostra = (int) (amostra * 1000);
+		}
+
+		return amostra;
+	}
+
 	private void escreveFicheiro() {
 		try {
-			PrintWriter outFile = new PrintWriter(new FileWriter("rayleigh.txt"));
+			PrintWriter outFile = new PrintWriter(new FileWriter("rayleigh" + numAmostras + ".txt"));
 
 			for (double a : resultados)
 				outFile.println(a + ", ");
@@ -44,13 +58,14 @@ public class Rayleigh { // +++++++++ INTERVALO DE 20K 25K ++++++++++++++++
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("rayleigh" + numAmostras + ".txt escrito em disco");
 	}
 
 	public static void main(String[] args) {
 
 		double loc = 20.0; // localização
 		double esc = 2.0; // escala
-		int numAmostras = 1000;
+		int numAmostras = 10000;
 
 		Rayleigh ray = new Rayleigh(loc, esc, numAmostras);
 		ray.gerar();

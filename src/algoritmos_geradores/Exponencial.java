@@ -32,10 +32,26 @@ public class Exponencial { // ++++++++++ INTERVALO DE 25K A 30K ++++++++++++++++
 		}
 		escreveFicheiro();
 	}
+	
+	public double gerarExponencial() {
+		
+		double lambda = 1.0;
+		double inicio = 25.0;
+		
+		double amostra = inicio + Math.log(1 - Math.random()) / (-lambda);
+		amostra = (int) (amostra * 1000);
+		while (amostra > 30000) {
+			amostra = inicio + Math.log(1 - Math.random()) / (-lambda);
+			amostra = (int) (amostra * 1000);
+		}
+		
+		return amostra;
+		
+	}
 
 	private void escreveFicheiro() {
 		try {
-			PrintWriter outFile = new PrintWriter(new FileWriter("exponencial.txt"));
+			PrintWriter outFile = new PrintWriter(new FileWriter("exponencial" + numAmostras + ".txt"));
 
 			for (double a : resultados)
 				outFile.println(a + ", ");
@@ -44,6 +60,7 @@ public class Exponencial { // ++++++++++ INTERVALO DE 25K A 30K ++++++++++++++++
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("exponencial" + numAmostras + ".txt escrito em disco");
 	}
 
 	public static void main(String[] args) {
@@ -51,7 +68,7 @@ public class Exponencial { // ++++++++++ INTERVALO DE 25K A 30K ++++++++++++++++
 //		double inicio = 25000.0;
 		double lambda = 1.0;
 		double inicio = 25.0;
-		int numAmostras = 1000;
+		int numAmostras = 10000;
 		Exponencial e = new Exponencial(inicio, lambda, numAmostras);
 		e.gerar();
 	}

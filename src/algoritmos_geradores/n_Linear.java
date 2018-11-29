@@ -17,6 +17,15 @@ public class n_Linear {
 		resultado = declive * x;
 		resultados.add(resultado);
 	}
+	
+	public double gerarn_Linear() {
+		double declive = 0.5;
+		double x = 5;
+		double amostra = 0.0;
+		amostra = declive * x;
+		
+		return amostra;
+	}
 
 	public static void main(String[] args) {
 		double declive = 0.5;

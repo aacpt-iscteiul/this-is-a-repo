@@ -34,9 +34,30 @@ public class Gaussiana {
 		escreveFicheiro();
 	}
 	
+	public double gerarGaussiana() {
+		
+		double dp = 0.2;
+		double media = 5.0;
+		double min = 4.0;
+		double max = 6.0;
+		
+		
+		Random r = new Random();
+		double amostra = r.nextGaussian() * dp + media;
+		while (amostra < min || amostra > max) {
+			r = new Random();
+			amostra = r.nextGaussian() * dp + media;
+		}
+		
+		amostra = round(amostra, 2); //Implement this?
+		return amostra;
+		
+		
+	}
+	
 	private void escreveFicheiro() {
 		try {
-			PrintWriter outFile = new PrintWriter(new FileWriter("gaussiana.txt"));
+			PrintWriter outFile = new PrintWriter(new FileWriter("gaussiana" + contador + ".txt"));
 
 			for (double a : resultados)
 				outFile.println(a + ", ");
@@ -45,6 +66,7 @@ public class Gaussiana {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println("gaussiana" + contador + ".txt escrito em disco");
 	}
 	
 	public double round(double value, int places) {
@@ -56,7 +78,8 @@ public class Gaussiana {
 	}
 
 	public static void main(String[] args) {
-		Gaussiana g = new Gaussiana(1000);
+		int contador = 10000;
+		Gaussiana g = new Gaussiana(contador);
 		try {
 			g.gerar(0.2, 5.0, 4.0, 6.0);
 		} catch (InterruptedException e) {
