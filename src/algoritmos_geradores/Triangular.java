@@ -39,7 +39,7 @@ public class Triangular { // ++++++++++ INTERVALO DE 5K A 10K ++++++++++++++++
 
 	private void escreveFicheiro() {
 		try {
-			PrintWriter outFile = new PrintWriter(new FileWriter("triangular.txt"));
+			PrintWriter outFile = new PrintWriter(new FileWriter("triangular" + numAmostras + ".txt"));
 
 			for (double a : resultados)
 				outFile.println(a + ", ");
@@ -51,11 +51,11 @@ public class Triangular { // ++++++++++ INTERVALO DE 5K A 10K ++++++++++++++++
 	}
 
 	public static void main(String[] args) {
-		
+
 		double xMin = 5000.;
 		double xMax = 10000.;
 		double c = 6500.; // Moda
-		int numAmostras = 1000;
+		int numAmostras = 10000;
 
 		Triangular t = new Triangular(xMax, xMin, c, numAmostras);
 		t.gerar();
