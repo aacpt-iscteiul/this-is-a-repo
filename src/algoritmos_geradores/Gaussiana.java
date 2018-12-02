@@ -1,4 +1,4 @@
-package algoritmos;
+package algoritmos_geradores;
 
 import java.io.FileWriter;
 import java.io.IOException;

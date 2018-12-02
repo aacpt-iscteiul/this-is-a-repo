@@ -1,4 +1,4 @@
-package algoritmos;
+package algoritmos_geradores;
 
 import java.util.ArrayList;
 

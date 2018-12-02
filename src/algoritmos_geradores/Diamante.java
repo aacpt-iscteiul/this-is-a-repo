@@ -1,4 +1,4 @@
-package algoritmos;
+package algoritmos_geradores;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class Diamante {
 		int contador = 0;
 		while (contador < contagens) {
 			double num = (Math.random() * 100);
-			System.out.println((int) num);
+//			System.out.println((int) num);
 			if (num < pct1) // 45% probabilidade de sair na posição 0
 				pos[0] += 1;
 			else if (num >= pct1 && num < (pct1 + pct2)) // 2.5% probabilidade de sair na posição 1
@@ -42,11 +42,11 @@ public class Diamante {
 			System.out.println("posição " + i + " tem " + pos[i] + " ocorrências");
 		escreveFicheiro();
 	}
-	
+
 	public int gerarPosDiamante() {
-		
+
 		double num = (Math.random() * 100);
-		
+
 		if (num < pct1) // 45% probabilidade de sair na posição 0
 			return 0;
 		else if (num >= pct1 && num < (pct1 + pct2)) // 2.5% probabilidade de sair na posição 1
@@ -55,22 +55,22 @@ public class Diamante {
 			return 2;
 		else if (num >= (pct1 + pct2 + pct3) && num < (100 - pct1)) // 2.5% probabilidade de sair na posição 3
 			return 3;
-		//Provavelmente tem de ser s� else return 4; But I can't compile....
-		//else if (num >= (100 - pct1)) // 45% probabilidade de sair na posição 4
-		else 
+		// Provavelmente tem de ser s� else return 4; But I can't compile....
+		// else if (num >= (100 - pct1)) // 45% probabilidade de sair na posição 4
+		else
 			return 4;
-		
+
 	}
 
 	private void escreveFicheiro() {
 		try {
 			PrintWriter outFile = new PrintWriter(new FileWriter("diamante" + contagens + ".txt"));
 
-			outFile.println(pos[0]);
-			outFile.println(pos[1]);
-			outFile.println(pos[2]);
-			outFile.println(pos[3]);
-			outFile.println(pos[4]);
+			outFile.println(pos[0] + ",");
+			outFile.println(pos[1] + ",");
+			outFile.println(pos[2] + ",");
+			outFile.println(pos[3] + ",");
+			outFile.println(pos[4] + ",");
 
 			outFile.close();
 		} catch (IOException e) {
