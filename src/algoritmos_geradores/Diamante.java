@@ -25,21 +25,21 @@ public class Diamante {
 		while (contador < contagens) {
 			double num = (Math.random() * 100);
 //			System.out.println((int) num);
-			if (num < pct1) // 45% probabilidade de sair na posiÃ§Ã£o 0
+			if (num < pct1) // 45% probabilidade de sair na posição 0
 				pos[0] += 1;
-			else if (num >= pct1 && num < (pct1 + pct2)) // 2.5% probabilidade de sair na posiÃ§Ã£o 1
+			else if (num >= pct1 && num < (pct1 + pct2)) // 2.5% probabilidade de sair na posição 1
 				pos[1] += 1;
-			else if (num >= (pct1 + pct2) && num < (pct1 + pct2 + pct3)) // 5% probabilidade de sair na posiÃ§Ã£o 2
+			else if (num >= (pct1 + pct2) && num < (pct1 + pct2 + pct3)) // 5% probabilidade de sair na posição 2
 				pos[2] += 1;
-			else if (num >= (pct1 + pct2 + pct3) && num < (100 - pct1)) // 2.5% probabilidade de sair na posiÃ§Ã£o 3
+			else if (num >= (pct1 + pct2 + pct3) && num < (100 - pct1)) // 2.5% probabilidade de sair na posição 3
 				pos[3] += 1;
-			else if (num >= (100 - pct1)) // 45% probabilidade de sair na posiÃ§Ã£o 4
+			else if (num >= (100 - pct1)) // 45% probabilidade de sair na posição 4
 				pos[4] += 1;
 //				Thread.sleep(1);
 			contador++;
 		}
 		for (int i = 0; i < pos.length; i++)
-			System.out.println("posiÃ§Ã£o " + i + " tem " + pos[i] + " ocorrÃªncias");
+			System.out.println("posição " + i + " tem " + pos[i] + " ocorrências");
 		escreveFicheiro();
 	}
 
@@ -47,16 +47,16 @@ public class Diamante {
 
 		double num = (Math.random() * 100);
 
-		if (num < pct1) // 45% probabilidade de sair na posiÃ§Ã£o 0
+		if (num < pct1) // 45% probabilidade de sair na posição 0
 			return 0;
-		else if (num >= pct1 && num < (pct1 + pct2)) // 2.5% probabilidade de sair na posiÃ§Ã£o 1
+		else if (num >= pct1 && num < (pct1 + pct2)) // 2.5% probabilidade de sair na posição 1
 			return 1;
-		else if (num >= (pct1 + pct2) && num < (pct1 + pct2 + pct3)) // 5% probabilidade de sair na posiÃ§Ã£o 2
+		else if (num >= (pct1 + pct2) && num < (pct1 + pct2 + pct3)) // 5% probabilidade de sair na posição 2
 			return 2;
-		else if (num >= (pct1 + pct2 + pct3) && num < (100 - pct1)) // 2.5% probabilidade de sair na posiÃ§Ã£o 3
+		else if (num >= (pct1 + pct2 + pct3) && num < (100 - pct1)) // 2.5% probabilidade de sair na posição 3
 			return 3;
-		// Provavelmente tem de ser sï¿½ else return 4; But I can't compile....
-		// else if (num >= (100 - pct1)) // 45% probabilidade de sair na posiÃ§Ã£o 4
+		// Provavelmente tem de ser só else return 4; But I can't compile....
+		// else if (num >= (100 - pct1)) // 45% probabilidade de sair na posição 4
 		else
 			return 4;
 

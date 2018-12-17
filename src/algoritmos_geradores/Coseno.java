@@ -21,7 +21,7 @@ public class Coseno {
 
 	public void gerar() {
 
-		double a = 0.5 * (xMin + xMax); 		// parametro de localizaÃ§Ã£o = moda/mÃ©dia
+		double a = 0.5 * (xMin + xMax); 		// parametro de localização = moda/média
 		double b = (xMax - xMin) / Math.PI; 	// parametro de escala
 		for (int i = 0; i < numAmostras; i++) {
 			double amostra = a + b * Math.asin(1.0 - Math.random() * 2);
@@ -36,7 +36,7 @@ public class Coseno {
 		
 		double xMin = 10000.;
 		double xMax = 15000.;
-		double a = 0.5 * (xMin + xMax); 		// parametro de localizaÃ§Ã£o = moda/mÃ©dia
+		double a = 0.5 * (xMin + xMax); 		// parametro de localização = moda/média
 		double b = (xMax - xMin) / Math.PI; 	// parametro de escala
 		double amostra = a + b * Math.asin(1.0 - Math.random() * 2);
 		
