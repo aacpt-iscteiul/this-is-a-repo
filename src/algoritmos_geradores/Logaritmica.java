@@ -54,7 +54,7 @@ public class Logaritmica {
 
 	private void escreveFicheiro() {
 		try {
-			PrintWriter outFile = new PrintWriter(new FileWriter("logaritmica." + numAmostras + "txt"));
+			PrintWriter outFile = new PrintWriter(new FileWriter("logaritmica" + numAmostras + ".txt"));
 
 			for (double a : resultados)
 				outFile.println(a + ", ");
